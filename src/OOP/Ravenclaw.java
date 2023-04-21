@@ -13,7 +13,10 @@ public class Ravenclaw extends Hogwarts {
         this.wit = wit;
         this.creativity = creativity;
     }
-
+    @Override
+    public int getAbility() {
+        return cleverness + wisdom + wit + creativity;
+    }
     public int getCleverness() {
         return cleverness;
     }
@@ -46,22 +49,23 @@ public class Ravenclaw extends Hogwarts {
         this.creativity = creativity;
     }
     @Override
-    public void getStudentInfo() {
-        System.out.println("Ученик " + getName() + " " + getSurname() + " имеет следующие характеристики: " +
-                "мощность: " + getMagicPower() + ", дальность: " + getTransgressionDistance() + ", ум: " + getCleverness() +
-                ", мудрость: " + getWisdom() +  ", остроумие: " + getWit()  +  ", креативность: " + getCreativity());
+    public String toString() {
+        return super.toString() +
+                "cleverness=" + cleverness +
+                ", wisdom=" + wisdom +
+                ", wit=" + wit +
+                ", creativity=" + creativity;
     }
-    public static void compareStudents(Ravenclaw firstStudent, Ravenclaw secondStudent) {
-        int firstStudentCount = firstStudent.getCleverness() + firstStudent.getWit() + firstStudent.getWisdom() + firstStudent.getCreativity();
-        int secondStudentCount = secondStudent.getCleverness() + secondStudent.getWit() + secondStudent.getWisdom() + secondStudent.getCreativity();
-        if (firstStudentCount > secondStudentCount) {
-            System.out.println(firstStudent.getName() + " лучший Когтевранец, чем " + secondStudent.getName());
+
+    public void compareStudents(Ravenclaw secondStudent) {
+        if (this.getAbility() > secondStudent.getAbility()) {
+            System.out.println(this.toString() + " лучший Когтевранец, чем " + secondStudent.toString());
         }
-        else if (firstStudentCount < secondStudentCount) {
-            System.out.println(secondStudent.getName() + " лучший Когтевранец, чем " + firstStudent.getName());
+        else if (this.getAbility() < secondStudent.getAbility()) {
+            System.out.println(secondStudent.toString() + " лучший Когтевранец, чем " + this.toString());
         }
         else {
-            System.out.println(firstStudent.getName() + " и " + secondStudent.getName() + " одинаковые по силе Когтевранцы");
+            System.out.println(this.toString() + " и " + secondStudent.toString() + " одинаковые по силе Когтевранцы");
         }
     }
 }

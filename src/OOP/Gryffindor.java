@@ -11,7 +11,10 @@ public class Gryffindor extends Hogwarts {
         this.courage = courage;
         this.nobility = nobility;
     }
-
+    @Override
+    public int getAbility() {
+        return honor + courage + nobility;
+    }
     public int getHonor() {
         return honor;
     }
@@ -37,23 +40,23 @@ public class Gryffindor extends Hogwarts {
     }
 
     @Override
-    public void getStudentInfo() {
-        System.out.println("Ученик " + getName() + " " + getSurname() + " имеет следующие характеристики: " +
-                "мощность: " + getMagicPower() + ", дальность: " + getTransgressionDistance() + ", честь: " + getHonor() +
-                ", храбрость: " + getCourage() +  ", благородство: " + getNobility());
+    public String toString() {
+        return super.toString() +
+                "honor=" + honor +
+                ", courage=" + courage +
+                ", nobility=" + nobility;
+
     }
 
-    public static void compareStudents(Gryffindor firstStudent, Gryffindor secondStudent) {
-        int firstStudentCount = firstStudent.getHonor() + firstStudent.getNobility() + firstStudent.getCourage();
-        int secondStudentCount = secondStudent.getHonor() + secondStudent.getNobility() + secondStudent.getCourage();
-        if (firstStudentCount > secondStudentCount) {
-            System.out.println(firstStudent.getName() + " лучший Гриффиндорец, чем " + secondStudent.getName());
+    public void compareStudents(Gryffindor secondStudent) {
+        if (this.getAbility() > secondStudent.getAbility()) {
+            System.out.println(this.toString() + " лучший Гриффиндорец, чем " + secondStudent.toString());
         }
-        else if (firstStudentCount < secondStudentCount) {
-            System.out.println(secondStudent.getName() + " лучший Гриффиндорец, чем " + firstStudent.getName());
+        else if (this.getAbility() < secondStudent.getAbility()) {
+            System.out.println(secondStudent.toString() + " лучший Гриффиндорец, чем " + this.toString());
         }
         else {
-            System.out.println(firstStudent.getName() + " и " + secondStudent.getName() + " одинаковые по силе Гриффиндорцы");
+            System.out.println(this.toString() + " и " + secondStudent.toString() + " одинаковые по силе Гриффиндорцы");
         }
     }
 }

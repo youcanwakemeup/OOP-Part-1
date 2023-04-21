@@ -14,14 +14,8 @@ public class Main {
         Ravenclaw cho = new Ravenclaw("Чжоу", "Чанг", 30, 20, 10, 40, 50, 80);
         Ravenclaw padma = new Ravenclaw("Падма", "Патил", 20, 30, 20, 50, 60, 70);
         Ravenclaw marcus = new Ravenclaw("Маркус", "Белби", 10, 40, 30, 60, 70, 60);
-        harry.getStudentInfo();
-        draco.getStudentInfo();
-        zacharias.getStudentInfo();
-        cho.getStudentInfo();
-        Gryffindor.compareStudents(harry, hermione);
-        Slytherin.compareStudents(draco, graham);
-        Hufflepuff.compareStudents(zacharias, cedric);
-        Ravenclaw.compareStudents(cho, padma);
-        Hogwarts.compareAllStudents(harry, draco);
+        System.out.println(harry.toString());
+        harry.compareStudents(hermione);
+
     }
 }

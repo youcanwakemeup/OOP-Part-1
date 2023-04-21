@@ -15,7 +15,10 @@ public class Slytherin extends Hogwarts {
         this.resourcefulness = resourcefulness;
         this.powerLust = powerLust;
     }
-
+    @Override
+    public int getAbility() {
+        return cunning + determination + ambition + resourcefulness + powerLust;
+    }
     public int getCunning() {
         return cunning;
     }
@@ -55,24 +58,26 @@ public class Slytherin extends Hogwarts {
     public void setPowerLust(int powerLust) {
         this.powerLust = powerLust;
     }
+
     @Override
-    public void getStudentInfo() {
-        System.out.println("Ученик " + getName() + " " + getSurname() + " имеет следующие характеристики: " +
-                "мощность: " + getMagicPower() + ", дальность: " + getTransgressionDistance() + ", хитрость: " + getCunning() +
-                ", решительность: " + getDetermination() +
-                ", амбициозность: " + getAmbition() + ", находчивость: " + getResourcefulness() + ", жажда власти: " + getPowerLust());
+    public String toString() {
+        return super.toString() +
+                "cunning=" + cunning +
+                ", determination=" + determination +
+                ", ambition=" + ambition +
+                ", resourcefulness=" + resourcefulness +
+                ", powerLust=" + powerLust;
     }
-    public static void compareStudents(Slytherin firstStudent, Slytherin secondStudent) {
-        int firstStudentCount = firstStudent.getCunning() + firstStudent.getPowerLust() + firstStudent.getResourcefulness() + firstStudent.getDetermination() + firstStudent.getAmbition();
-        int secondStudentCount = secondStudent.getCunning() + secondStudent.getPowerLust() + secondStudent.getResourcefulness() + secondStudent.getDetermination() + secondStudent.getAmbition();
-        if (firstStudentCount > secondStudentCount) {
-            System.out.println(firstStudent.getName() + " лучший Слизеринец, чем " + secondStudent.getName());
+
+    public void compareStudents(Slytherin secondStudent) {
+        if (this.getAbility() > secondStudent.getAbility()) {
+            System.out.println(this.toString() + " лучший Слизеринец, чем " + secondStudent.toString());
         }
-        else if (firstStudentCount < secondStudentCount) {
-            System.out.println(secondStudent.getName() + " лучший Слизеринец, чем " + firstStudent.getName());
+        else if (this.getAbility() < secondStudent.getAbility()) {
+            System.out.println(secondStudent.toString() + " лучший Слизеринец, чем " + this.toString());
         }
         else {
-            System.out.println(firstStudent.getName() + " и " + secondStudent.getName() + " одинаковые по силе Слизеринцы");
+            System.out.println(this.toString() + " и " + secondStudent.toString() + " одинаковые по силе Слизеринцы");
         }
     }
 }
